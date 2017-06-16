@@ -11,34 +11,35 @@ const izz = require("../src");
 const failed = (reason) => {
     throw new Error(reason);
 };
-let IzzStringTest = class IzzStringTest {
-    "izz.string.validate returns true for empty strings"() {
-        if (izz.string.validate("") != true)
-            failed("Failed on an empty string");
+const TYPE_NAME = "boolean";
+let IzzBooleanTest = class IzzBooleanTest {
+    "izz.boolean.validate returns true for true"() {
+        if (izz.boolean.validate(true) != true)
+            failed(TYPE_NAME + " failed on true");
     }
-    "izz.string.validate returns true for normal strings"() {
-        if (izz.string.validate("a longer string") != true)
-            failed("Failed on a normal string");
+    "izz.boolean.validate returns true for false"() {
+        if (izz.boolean.validate(false) != true)
+            failed(TYPE_NAME + " failed on false");
     }
-    "izz.string.validate returns false for non-numbers"() {
+    "izz.boolean.validate returns false for non-boolean"() {
         let data = [
-            0.0, -1.23, 1.23, -1, 0, 1, true, false, null, { beef: false }, undefined, [{}], {},
+            "beef", "", -1, 0, 1, 2.0, 0.0, -1.3, null, { beef: false }, undefined, [{}], {},
         ];
         data.forEach((item) => {
-            if (izz.string.validate(item))
-                failed(`Failed on non-string (${JSON.stringify(item)})`);
+            if (izz.boolean.validate(item))
+                failed(`Failed on non-${TYPE_NAME} (${JSON.stringify(item)})`);
         });
     }
 };
 __decorate([
     mocha_typescript_1.test
-], IzzStringTest.prototype, "izz.string.validate returns true for empty strings", null);
+], IzzBooleanTest.prototype, "izz.boolean.validate returns true for true", null);
 __decorate([
     mocha_typescript_1.test
-], IzzStringTest.prototype, "izz.string.validate returns true for normal strings", null);
+], IzzBooleanTest.prototype, "izz.boolean.validate returns true for false", null);
 __decorate([
     mocha_typescript_1.test
-], IzzStringTest.prototype, "izz.string.validate returns false for non-numbers", null);
-IzzStringTest = __decorate([
+], IzzBooleanTest.prototype, "izz.boolean.validate returns false for non-boolean", null);
+IzzBooleanTest = __decorate([
     mocha_typescript_1.suite
-], IzzStringTest);
+], IzzBooleanTest);

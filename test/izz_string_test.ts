@@ -17,14 +17,13 @@ const failed = (reason: string): never => {
     if (izz.string.validate("a longer string") != true) failed("Failed on a normal string")
   }
 
-  @test "izz.string.validate returns false for non-strings" () {
+  @test "izz.string.validate returns false for non-numbers" () {
     let data = [
-      0, 1, true, false, null, {beef: false}, undefined, [{}], {},
+      0.0, -1.23, 1.23, -1, 0, 1, true, false, null, {beef: false}, undefined, [{}], {},
     ]
-    if (data.some(izz.string.validate)) failed("Failed on non-string")
+    data.forEach((item: any) => {
+      if (izz.string.validate(item)) failed(`Failed on non-string (${JSON.stringify(item)})`)
+    })
   }
-
-
-
 
 }
