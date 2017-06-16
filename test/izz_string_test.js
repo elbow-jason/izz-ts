@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 const mocha_typescript_1 = require("mocha-typescript");
 const izz = require("../src");
-let IzzTest = class IzzTest {
+let IzzStringTest = class IzzStringTest {
     "izz.string.validate returns true for strings"() {
         const result1 = izz.string.validate("");
         if (result1 != true)
@@ -20,7 +20,7 @@ let IzzTest = class IzzTest {
 };
 __decorate([
     mocha_typescript_1.test
-], IzzTest.prototype, "izz.string.validate returns true for strings", null);
-IzzTest = __decorate([
+], IzzStringTest.prototype, "izz.string.validate returns true for strings", null);
+IzzStringTest = __decorate([
     mocha_typescript_1.suite
-], IzzTest);
+], IzzStringTest);
