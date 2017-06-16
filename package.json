@@ -1,20 +1,23 @@
 {
-    "name": "izz-ts",
-    "version": "0.1.0",
-    "description": "Easy type guards for TypeScript",
-    "main": "dist/index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "tsc build ."
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/elbow-jason/izz-ts.git"
-    },
-    "author": "Jason Goldberger <jlgoldb2@asu.edu>",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/elbow-jason/izz-ts/issues"
-    },
-    "homepage": "https://github.com/elbow-jason/izz-ts#readme"
+  "name": "izz-ts",
+  "version": "0.1.0",
+  "description": "Easy type guards for TypeScript",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "tsc && mocha",
+    "build": "tsc build ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elbow-jason/izz-ts.git"
+  },
+  "author": "Jason Goldberger <jlgoldb2@asu.edu>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elbow-jason/izz-ts/issues"
+  },
+  "homepage": "https://github.com/elbow-jason/izz-ts#readme",
+  "devDependencies": {
+    "mocha-typescript": "^1.1.4"
+  }
 }
