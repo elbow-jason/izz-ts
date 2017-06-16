@@ -11,6 +11,9 @@ import arrayType      from './array_type'
 import optionalType   from './optional_type'
 import unionType      from './union_type'
 
+// helpers
+import DataValidator  from './data_validator'
+
 export {
   anyType as any,
   nullType as null,
@@ -22,4 +25,5 @@ export {
   arrayType as array,
   optionalType as optional,
   unionType as union,
+  DataValidator,
 }

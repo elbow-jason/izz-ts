@@ -1,7 +1,7 @@
 
 import { Typed } from './typed'
 
-export class DataValidator<T> {
+export default class DataValidator<T> {
   typed: Typed
   constructor(typed: Typed) {
     this.typed = typed
