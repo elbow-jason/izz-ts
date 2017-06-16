@@ -1,12 +1,12 @@
 {
     "name": "izz-ts",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "Easy type guards for TypeScript",
     "main": "dist/index.js",
     "files": [
         "dist"
     ],
-    "types": "dist/index.d.ts",
+    "types": "dist/src/index.d.ts",
     "scripts": {
         "test": "npm run clean && tsc && mocha",
         "clean": "rm -rf dist/*",
