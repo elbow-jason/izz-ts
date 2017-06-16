@@ -28,7 +28,7 @@ const failed = (reason: string): never => {
 
   @test "izz.number.validate returns false for non-numbers" () {
     let data = [
-      "beef", true, false, null, {beef: false}, undefined, [{}], {},
+      "beef", true, false, null, {beef: false}, undefined, [{}], {}, [1, 2, 3]
     ]
     data.forEach((item: any) => {
       if (izz.number.validate(item)) failed(`Failed on non-string (${JSON.stringify(item)})`)

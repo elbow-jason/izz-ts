@@ -12,7 +12,7 @@ const failed = (reason) => {
     throw new Error(reason);
 };
 let IzzUndefinedTest = class IzzUndefinedTest {
-    "izz.undefined.validate returns true for true"() {
+    "izz.undefined.validate returns true for undefined"() {
         if (izz.undefined.validate(undefined) != true)
             failed("Failed on undefined");
     }
@@ -28,7 +28,7 @@ let IzzUndefinedTest = class IzzUndefinedTest {
 };
 __decorate([
     mocha_typescript_1.test
-], IzzUndefinedTest.prototype, "izz.undefined.validate returns true for true", null);
+], IzzUndefinedTest.prototype, "izz.undefined.validate returns true for undefined", null);
 __decorate([
     mocha_typescript_1.test
 ], IzzUndefinedTest.prototype, "izz.undefined.validate returns false for non-undefineds", null);

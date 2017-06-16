@@ -20,7 +20,7 @@ let IzzStringTest = class IzzStringTest {
         if (izz.string.validate("a longer string") != true)
             failed("Failed on a normal string");
     }
-    "izz.string.validate returns false for non-numbers"() {
+    "izz.string.validate returns false for non-strings"() {
         let data = [
             0.0, -1.23, 1.23, -1, 0, 1, true, false, null, { beef: false }, undefined, [{}], {},
         ];
@@ -38,7 +38,7 @@ __decorate([
 ], IzzStringTest.prototype, "izz.string.validate returns true for normal strings", null);
 __decorate([
     mocha_typescript_1.test
-], IzzStringTest.prototype, "izz.string.validate returns false for non-numbers", null);
+], IzzStringTest.prototype, "izz.string.validate returns false for non-strings", null);
 IzzStringTest = __decorate([
     mocha_typescript_1.suite
 ], IzzStringTest);

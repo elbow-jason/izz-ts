@@ -12,11 +12,11 @@ const failed = (reason) => {
     throw new Error(reason);
 };
 let IzzNullTest = class IzzNullTest {
-    "izz.null.validate returns true for true"() {
+    "izz.null.validate returns true for null"() {
         if (izz.null.validate(null) != true)
             failed("Failed on null");
     }
-    "izz.null.validate returns false for non-booleans"() {
+    "izz.null.validate returns false for non-nulls"() {
         let data = [
             "beef", "", -1, 0, 1, 1.0, -1.0, 0.0, false, true, undefined, { beef: false }, [{}], {},
         ];
@@ -28,10 +28,10 @@ let IzzNullTest = class IzzNullTest {
 };
 __decorate([
     mocha_typescript_1.test
-], IzzNullTest.prototype, "izz.null.validate returns true for true", null);
+], IzzNullTest.prototype, "izz.null.validate returns true for null", null);
 __decorate([
     mocha_typescript_1.test
-], IzzNullTest.prototype, "izz.null.validate returns false for non-booleans", null);
+], IzzNullTest.prototype, "izz.null.validate returns false for non-nulls", null);
 IzzNullTest = __decorate([
     mocha_typescript_1.suite
 ], IzzNullTest);

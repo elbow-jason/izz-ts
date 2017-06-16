@@ -32,7 +32,7 @@ let IzzNumberTest = class IzzNumberTest {
     }
     "izz.number.validate returns false for non-numbers"() {
         let data = [
-            "beef", true, false, null, { beef: false }, undefined, [{}], {},
+            "beef", true, false, null, { beef: false }, undefined, [{}], {}, [1, 2, 3]
         ];
         data.forEach((item) => {
             if (izz.number.validate(item))

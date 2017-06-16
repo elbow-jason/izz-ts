@@ -9,11 +9,11 @@ const failed = (reason: string): never => {
 
 @suite class IzzNullTest {
 
-  @test "izz.null.validate returns true for true" () {
+  @test "izz.null.validate returns true for null" () {
     if (izz.null.validate(null) != true) failed("Failed on null")
   }
 
-  @test "izz.null.validate returns false for non-booleans" () {
+  @test "izz.null.validate returns false for non-nulls" () {
     let data = [
       "beef", "", -1, 0, 1, 1.0, -1.0, 0.0, false, true, undefined, {beef: false}, [{}], {},
     ]

@@ -9,7 +9,7 @@ const failed = (reason: string): never => {
 
 @suite class IzzUndefinedTest {
 
-  @test "izz.undefined.validate returns true for true" () {
+  @test "izz.undefined.validate returns true for undefined" () {
     if (izz.undefined.validate(undefined) != true) failed("Failed on undefined")
   }
 

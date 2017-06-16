@@ -17,7 +17,7 @@ const failed = (reason: string): never => {
     if (izz.string.validate("a longer string") != true) failed("Failed on a normal string")
   }
 
-  @test "izz.string.validate returns false for non-numbers" () {
+  @test "izz.string.validate returns false for non-strings" () {
     let data = [
       0.0, -1.23, 1.23, -1, 0, 1, true, false, null, {beef: false}, undefined, [{}], {},
     ]
