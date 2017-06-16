@@ -1,0 +1,1 @@
+{"version":3,"file":"data_validator.js","sourceRoot":"","sources":["../src/data_validator.ts"],"names":[],"mappings":"AAGA;IAEE,uBAAY,KAAY;QACtB,IAAI,CAAC,KAAK,GAAG,KAAK,CAAA;IACpB,CAAC;IAED,gCAAQ,GAAR,UAAS,IAAS;QAChB,MAAM,CAAC,IAAI,CAAC,KAAK,CAAC,QAAQ,CAAC,IAAI,CAAC,CAAA;IAClC,CAAC;IACH,oBAAC;AAAD,CAAC,AATD,IASC"}
