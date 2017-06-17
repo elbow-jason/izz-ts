@@ -1,9 +1,19 @@
 {
     "compilerOptions": {
         "outDir": "./dist",
-        "target": "es6",
+        "target": "es5",
         "module": "commonjs",
         "experimentalDecorators": true,
+        "strictNullChecks": true,
+        "declaration": true,
+        "noImplicitAny": true,
+        "allowUnreachableCode": false,
+        "types": [],
         "lib": ["es6"]
-    }
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "compileOnSave": false,
+    "buildOnSave": false
 }
