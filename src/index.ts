@@ -10,7 +10,7 @@ import objectType     from './object_type'
 import arrayType      from './array_type'
 import optionalType   from './optional_type'
 import unionType      from './union_type'
-
+import literalType    from './literal_type'
 // helpers
 import DataValidator  from './data_validator'
 
@@ -25,5 +25,6 @@ export {
   arrayType as array,
   optionalType as optional,
   unionType as union,
+  literalType as literal,
   DataValidator,
 }

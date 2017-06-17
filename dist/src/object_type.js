@@ -7,15 +7,15 @@ var getTyped = function (obj, field) {
 var getData = function (data, field) {
     return data[field];
 };
-var ObjectT = (function () {
-    function ObjectT(fields) {
+var ObjectType = (function () {
+    function ObjectType(fields) {
         if (fields === void 0) { fields = {}; }
         this.fields = fields;
     }
-    ObjectT.prototype.validate = function (data) {
+    ObjectType.prototype.validate = function (data) {
         return (typeof data === 'object' && !Array.isArray(data) && (data != null) && this.validateFields(data));
     };
-    ObjectT.prototype.validateFields = function (data) {
+    ObjectType.prototype.validateFields = function (data) {
         for (var prop in this.fields) {
             if (this.fields.hasOwnProperty(prop)) {
                 var value = getData(data, prop);
@@ -28,10 +28,10 @@ var ObjectT = (function () {
         }
         return true;
     };
-    return ObjectT;
+    return ObjectType;
 }());
-exports.ObjectT = ObjectT;
+exports.ObjectType = ObjectType;
 var newObjectType = function (fields) {
-    return new ObjectT(fields);
+    return new ObjectType(fields);
 };
 exports.default = newObjectType;

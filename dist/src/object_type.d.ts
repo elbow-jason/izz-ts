@@ -1,5 +1,5 @@
 import { Typed } from './typed';
-export declare class ObjectT implements Typed {
+export declare class ObjectType implements Typed {
     fields: {
         [key: string]: Typed;
     };
@@ -11,5 +11,5 @@ export declare class ObjectT implements Typed {
 }
 declare const newObjectType: (fields: {
     [key: string]: Typed;
-}) => ObjectT;
+}) => ObjectType;
 export default newObjectType;

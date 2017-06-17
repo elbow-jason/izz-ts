@@ -8,9 +8,10 @@
     ],
     "types": "dist/src/index.d.ts",
     "scripts": {
-        "test": "npm run clean && tsc && mocha",
+        "test": "npm run clean && tsc && npm run mocha",
         "clean": "rm -rf dist/*",
-        "build": "npm run clean && tsc"
+        "build": "npm run clean && tsc",
+        "mocha": "mocha -r ts-node/register test/*.ts"
     },
     "repository": {
         "type": "git",

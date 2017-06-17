@@ -22,6 +22,8 @@ var optional_type_1 = require("./optional_type");
 exports.optional = optional_type_1.default;
 var union_type_1 = require("./union_type");
 exports.union = union_type_1.default;
+var literal_type_1 = require("./literal_type");
+exports.literal = literal_type_1.default;
 // helpers
 var data_validator_1 = require("./data_validator");
 exports.DataValidator = data_validator_1.default;

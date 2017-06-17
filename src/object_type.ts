@@ -10,7 +10,7 @@ const getData = (data: any, field: string): any => {
   return data[field]
 }
 
-export class ObjectT implements Typed {
+export class ObjectType implements Typed {
   fields: { [key: string]: Typed }
   constructor(fields: { [key: string]: Typed } = {}) {
     this.fields = fields
@@ -36,8 +36,8 @@ export class ObjectT implements Typed {
 
 }
 
-const newObjectType = (fields: { [key: string]: Typed }): ObjectT => {
-  return new ObjectT(fields)
+const newObjectType = (fields: { [key: string]: Typed }): ObjectType => {
+  return new ObjectType(fields)
 }
 
 export default newObjectType
