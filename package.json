@@ -25,6 +25,7 @@
   "homepage": "https://github.com/elbow-jason/izz-ts#readme",
   "devDependencies": {
     "mocha-typescript": "^1.1.4",
+    "ts-node": "^3.1.0",
     "typescript": "^2.3.4"
   }
 }
