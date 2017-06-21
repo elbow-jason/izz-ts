@@ -4,14 +4,14 @@ import { Typed, FieldError } from './typed'
 export class DataValidator {
   typed: Typed
   errors: FieldError[] = []
-  named: string
+  name: string
   data: any
 
-  constructor(named: string, typed: Typed, data: any) {
-    this.named = named
+  constructor(name: string, typed: Typed, data: any) {
+    this.name = name
     this.typed = typed
     this.data = data
-    this.errors = this.typed.validate(this.named, this.data)
+    this.errors = this.typed.validate(this.name, this.data)
   }
 
   isValid(): boolean {
