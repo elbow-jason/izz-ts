@@ -1,29 +1,30 @@
 {
-    "name": "izz-ts",
-    "version": "0.2.1",
-    "description": "Easy type guards for TypeScript",
-    "main": "dist/src/index.js",
-    "files": [
-        "dist"
-    ],
-    "types": "dist/src/index.d.ts",
-    "scripts": {
-        "test": "npm run clean && tsc && npm run mocha",
-        "clean": "rm -rf dist/*",
-        "build": "npm run clean && tsc",
-        "mocha": "mocha -r ts-node/register test/*.ts"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/elbow-jason/izz-ts.git"
-    },
-    "author": "Jason Goldberger <jlgoldb2@asu.edu>",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/elbow-jason/izz-ts/issues"
-    },
-    "homepage": "https://github.com/elbow-jason/izz-ts#readme",
-    "devDependencies": {
-        "mocha-typescript": "^1.1.4"
-    }
+  "name": "izz-ts",
+  "version": "0.2.1",
+  "description": "Easy type guards for TypeScript",
+  "main": "dist/src/index.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/src/index.d.ts",
+  "scripts": {
+    "test": "npm run clean && tsc && npm run mocha",
+    "clean": "rm -rf dist/*",
+    "build": "npm run clean && tsc",
+    "mocha": "mocha -r ts-node/register test/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elbow-jason/izz-ts.git"
+  },
+  "author": "Jason Goldberger <jlgoldb2@asu.edu>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elbow-jason/izz-ts/issues"
+  },
+  "homepage": "https://github.com/elbow-jason/izz-ts#readme",
+  "devDependencies": {
+    "mocha-typescript": "^1.1.4",
+    "typescript": "^2.3.4"
+  }
 }
