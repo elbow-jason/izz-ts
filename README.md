@@ -11,7 +11,6 @@ A TypeScript Guard Type Checker
 ### Code
 
 ```typescript
-
 import * as izz from 'izz-ts'
 
 export class Sale {
@@ -59,7 +58,6 @@ export class Sale {
     }
   }
 }
-
 ```
 
 ### Logged Invalid Data
