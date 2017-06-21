@@ -1,20 +1,39 @@
-import { Typed } from './typed'
+import { Typed, FieldContext, FieldError, fieldErrors } from './typed'
 
-export class ArrayType<T> {
-  typed: Typed
+export class ArrayType<T> implements Typed {
+  readonly typed: Typed
+  readonly name: string = 'array'
 
   constructor(typed: Typed) {
     this.typed = typed
   }
 
-  validate(data: any): data is Array<T> {
-    return Array.isArray(data) && this.validateElements(data)
+  isValid(data: any): data is Array<T> {
+    return Array.isArray(data) && this.isValidElements(data)
   }
 
-  validateElements(data: Array<any>): boolean {
+  private isValidElements(data: Array<any>): boolean {
     return data.every((item: any): boolean => {
-      return this.typed.validate(item)
+      return this.typed.isValid(item)
     })
+  }
+
+  context(field: string, data: any): FieldContext[] {
+    if (Array.isArray(data)) {
+      return data.map((item: any, index: number) => {
+        return this.contextElement(`${field}[${index}]`, item)
+      })
+    } else {
+      return [this.contextElement(field, data)]
+    }
+  }
+
+  private contextElement(field: string, data: any): FieldContext { 
+    return new FieldContext(field, this.typed, data)
+  }
+
+  validate(field: string, data: any): FieldError[] {
+    return fieldErrors(this.context(field, data))
   }
 
 }

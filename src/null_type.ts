@@ -1,13 +1,12 @@
-import { Typed } from './typed'
+import { Typed, FieldContext } from './typed'
 
-export class NullType implements Typed {
+export class NullType extends Typed {
+  readonly name: string = 'null'
 
-  validate(data: any): data is null {
+  isValid(data: any): data is null {
     return data === null
   }
 
 }
 
-const nullType = new NullType()
-
-export default nullType
+export default new NullType()

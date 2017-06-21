@@ -1,13 +1,21 @@
 
-import { Typed } from './typed'
+import { Typed, FieldError } from './typed'
 
-export default class DataValidator<T> {
+export class DataValidator {
   typed: Typed
-  constructor(typed: Typed) {
+  errors: FieldError[] = []
+  named: string
+  data: any
+
+  constructor(named: string, typed: Typed, data: any) {
+    this.named = named
     this.typed = typed
+    this.data = data
+    this.errors = this.typed.validate(this.named, this.data)
   }
 
-  validate(data: any): data is T {
-    return this.typed.validate(data)
+  isValid(): boolean {
+    return (this.errors.length === 0)
   }
+
 }

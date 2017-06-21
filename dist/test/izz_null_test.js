@@ -14,16 +14,16 @@ var failed = function (reason) {
 var IzzNullTest = (function () {
     function IzzNullTest() {
     }
-    IzzNullTest.prototype["izz.null.validate returns true for null"] = function () {
-        if (izz.null.validate(null) != true)
+    IzzNullTest.prototype["izz.null.isValid returns true for null"] = function () {
+        if (izz.null.isValid(null) != true)
             failed("Failed on null");
     };
-    IzzNullTest.prototype["izz.null.validate returns false for non-nulls"] = function () {
+    IzzNullTest.prototype["izz.null.isValid returns false for non-nulls"] = function () {
         var data = [
             "beef", "", -1, 0, 1, 1.0, -1.0, 0.0, false, true, undefined, { beef: false }, [{}], {},
         ];
         data.forEach(function (item) {
-            if (izz.null.validate(item))
+            if (izz.null.isValid(item))
                 failed("Failed on non-null (" + JSON.stringify(item) + ")");
         });
     };
@@ -31,10 +31,10 @@ var IzzNullTest = (function () {
 }());
 __decorate([
     mocha_typescript_1.test
-], IzzNullTest.prototype, "izz.null.validate returns true for null", null);
+], IzzNullTest.prototype, "izz.null.isValid returns true for null", null);
 __decorate([
     mocha_typescript_1.test
-], IzzNullTest.prototype, "izz.null.validate returns false for non-nulls", null);
+], IzzNullTest.prototype, "izz.null.isValid returns false for non-nulls", null);
 IzzNullTest = __decorate([
     mocha_typescript_1.suite
 ], IzzNullTest);

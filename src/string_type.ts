@@ -1,10 +1,12 @@
-import { Typed } from './typed'
+import { Typed, FieldContext } from './typed'
 
-export class StringType implements Typed {
+export class StringType extends Typed {
+  readonly name: string = 'string'
 
-  validate(data: any): data is string {
+  isValid(data: any): data is string {
     return typeof data === 'string'
   }
+
 }
 
 export default new StringType()

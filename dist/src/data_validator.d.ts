@@ -1,6 +1,9 @@
-import { Typed } from './typed';
-export default class DataValidator<T> {
+import { Typed, FieldError } from './typed';
+export declare class DataValidator {
     typed: Typed;
-    constructor(typed: Typed);
-    validate(data: any): data is T;
+    errors: FieldError[];
+    named: string;
+    data: any;
+    constructor(named: string, typed: Typed, data: any);
+    isValid(): boolean;
 }

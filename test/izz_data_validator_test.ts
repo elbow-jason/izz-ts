@@ -23,7 +23,9 @@ class Animal {
   }
 }
 
-const animalValidator = new izz.DataValidator<Animal>(izzAnimal)
+const animalDataValidator = (name: string, data: any): izz.DataValidator => {
+  return new izz.DataValidator(name, izzAnimal, data)
+}
 
 const animalHasLegs = (animal: Animal): boolean => {
   return animal.hasLegs()
@@ -37,14 +39,16 @@ const animalHasLegs = (animal: Animal): boolean => {
       "legs": 2,
       "eats": ["meat", "veggies"]
     }
-    const isAnimal: boolean = animalValidator.validate(maybeAnimal)
+    const maybeAnimalValidator = animalDataValidator('maybeAnimal', maybeAnimal)
+    const isAnimal: boolean = maybeAnimalValidator.isValid()
     if (isAnimal != true) {
       failed("Validator did not validate correctly")
     }
     let nonAnimal = {
       shimmy: true
     }
-    const notAnimal = animalValidator.validate(nonAnimal)
+    const nonAnimalValidator = animalDataValidator('nonAnimal', nonAnimal)
+    const notAnimal = nonAnimalValidator.isValid()
     if (notAnimal != false) {
       failed("Validator did not invalidate correctly")
     }

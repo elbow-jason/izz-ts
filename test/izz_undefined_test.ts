@@ -9,16 +9,16 @@ const failed = (reason: string): never => {
 
 @suite class IzzUndefinedTest {
 
-  @test "izz.undefined.validate returns true for undefined" () {
-    if (izz.undefined.validate(undefined) != true) failed("Failed on undefined")
+  @test "izz.undefined.isValid returns true for undefined" () {
+    if (izz.undefined.isValid(undefined) != true) failed("Failed on undefined")
   }
 
-  @test "izz.undefined.validate returns false for non-undefineds" () {
+  @test "izz.undefined.isValid returns false for non-undefineds" () {
     let data = [
       "beef", "", -1, 0, 1, 1.0, -1.0, 0.0, {beef: false}, null, [{}], {},
     ]
     data.forEach((item: any) => {
-      if (izz.undefined.validate(item)) failed(`Failed on non-undefined (${JSON.stringify(item)})`)
+      if (izz.undefined.isValid(item)) failed(`Failed on non-undefined (${JSON.stringify(item)})`)
     })
   }
 

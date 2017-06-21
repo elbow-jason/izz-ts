@@ -1,15 +1,19 @@
 
-import { Typed } from './typed'
+import { Typed, FieldContext } from './typed'
 
 export type AllowedLiterals = ( number | boolean | string )
 
-export class LiteralType implements Typed {
-  value: AllowedLiterals
+export class LiteralType extends Typed {
+  readonly name: string
+  readonly value: AllowedLiterals
+
   constructor(value: AllowedLiterals) {
+    super()
     this.value = value
+    this.name = 'literal:' + JSON.stringify(value)
   }
 
-  validate(data: any): boolean {
+  isValid(data: any): boolean {
     return data === this.value
   }
 

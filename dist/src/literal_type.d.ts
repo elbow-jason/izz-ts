@@ -1,9 +1,10 @@
 import { Typed } from './typed';
 export declare type AllowedLiterals = (number | boolean | string);
-export declare class LiteralType implements Typed {
-    value: AllowedLiterals;
+export declare class LiteralType extends Typed {
+    readonly name: string;
+    readonly value: AllowedLiterals;
     constructor(value: AllowedLiterals);
-    validate(data: any): boolean;
+    isValid(data: any): boolean;
 }
 declare const newLiteralType: (value: string | number | boolean) => LiteralType;
 export default newLiteralType;

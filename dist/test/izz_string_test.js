@@ -14,20 +14,20 @@ var failed = function (reason) {
 var IzzStringTest = (function () {
     function IzzStringTest() {
     }
-    IzzStringTest.prototype["izz.string.validate returns true for empty strings"] = function () {
-        if (izz.string.validate("") != true)
+    IzzStringTest.prototype["izz.string.isValid returns true for empty strings"] = function () {
+        if (izz.string.isValid("") != true)
             failed("Failed on an empty string");
     };
-    IzzStringTest.prototype["izz.string.validate returns true for normal strings"] = function () {
-        if (izz.string.validate("a longer string") != true)
+    IzzStringTest.prototype["izz.string.isValid returns true for normal strings"] = function () {
+        if (izz.string.isValid("a longer string") != true)
             failed("Failed on a normal string");
     };
-    IzzStringTest.prototype["izz.string.validate returns false for non-strings"] = function () {
+    IzzStringTest.prototype["izz.string.isValid returns false for non-strings"] = function () {
         var data = [
             0.0, -1.23, 1.23, -1, 0, 1, true, false, null, { beef: false }, undefined, [{}], {},
         ];
         data.forEach(function (item) {
-            if (izz.string.validate(item))
+            if (izz.string.isValid(item))
                 failed("Failed on non-string (" + JSON.stringify(item) + ")");
         });
     };
@@ -35,13 +35,13 @@ var IzzStringTest = (function () {
 }());
 __decorate([
     mocha_typescript_1.test
-], IzzStringTest.prototype, "izz.string.validate returns true for empty strings", null);
+], IzzStringTest.prototype, "izz.string.isValid returns true for empty strings", null);
 __decorate([
     mocha_typescript_1.test
-], IzzStringTest.prototype, "izz.string.validate returns true for normal strings", null);
+], IzzStringTest.prototype, "izz.string.isValid returns true for normal strings", null);
 __decorate([
     mocha_typescript_1.test
-], IzzStringTest.prototype, "izz.string.validate returns false for non-strings", null);
+], IzzStringTest.prototype, "izz.string.isValid returns false for non-strings", null);
 IzzStringTest = __decorate([
     mocha_typescript_1.suite
 ], IzzStringTest);

@@ -1,8 +1,9 @@
-import { Typed } from './typed'
+import { Typed, FieldContext } from './typed'
 
-export class NumberType implements Typed {
+export class NumberType extends Typed {
+  readonly name: string = 'number'
 
-  validate(data: any): data is number {
+  isValid(data: any): data is number {
     return typeof data === 'number'
   }
 

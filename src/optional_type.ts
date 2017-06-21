@@ -1,14 +1,17 @@
-import { Typed } from './typed'
+import { Typed, FieldContext } from './typed'
 
-export class OptionalType implements Typed {
+export class OptionalType extends Typed {
+  readonly name: string
   typed: Typed
 
   constructor(typed: Typed) {
+    super()
     this.typed = typed
+    this.name = 'optional:' + typed.name
   }
 
-  validate(data: any): boolean {
-    return this.typed.validate(data) || (data === undefined)
+  isValid(data: any): boolean {
+    return this.typed.isValid(data) || (data === undefined)
   }
 
 }

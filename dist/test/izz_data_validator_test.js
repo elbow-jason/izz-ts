@@ -26,7 +26,9 @@ var Animal = (function () {
     };
     return Animal;
 }());
-var animalValidator = new izz.DataValidator(izzAnimal);
+var animalDataValidator = function (name, data) {
+    return new izz.DataValidator(name, izzAnimal, data);
+};
 var animalHasLegs = function (animal) {
     return animal.hasLegs();
 };
@@ -39,14 +41,16 @@ var IzzDataValidatorTest = (function () {
             "legs": 2,
             "eats": ["meat", "veggies"]
         };
-        var isAnimal = animalValidator.validate(maybeAnimal);
+        var maybeAnimalValidator = animalDataValidator('maybeAnimal', maybeAnimal);
+        var isAnimal = maybeAnimalValidator.isValid();
         if (isAnimal != true) {
             failed("Validator did not validate correctly");
         }
         var nonAnimal = {
             shimmy: true
         };
-        var notAnimal = animalValidator.validate(nonAnimal);
+        var nonAnimalValidator = animalDataValidator('nonAnimal', nonAnimal);
+        var notAnimal = nonAnimalValidator.isValid();
         if (notAnimal != false) {
             failed("Validator did not invalidate correctly");
         }

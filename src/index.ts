@@ -12,7 +12,9 @@ import optionalType   from './optional_type'
 import unionType      from './union_type'
 import literalType    from './literal_type'
 // helpers
-import DataValidator  from './data_validator'
+import { DataValidator }  from './data_validator'
+// common
+import { Typed, FieldContext, FieldError, fieldErrors } from './typed'
 
 export {
   anyType as any,
@@ -27,4 +29,8 @@ export {
   unionType as union,
   literalType as literal,
   DataValidator,
+  Typed,
+  FieldContext,
+  FieldError,
+  fieldErrors,
 }

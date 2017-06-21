@@ -14,34 +14,60 @@ var failed = function (reason) {
 var IzzBooleanTest = (function () {
     function IzzBooleanTest() {
     }
-    IzzBooleanTest.prototype["izz.boolean.validate returns true for true"] = function () {
-        if (izz.boolean.validate(true) != true)
+    IzzBooleanTest.prototype["izz.boolean.isValid returns true for true"] = function () {
+        if (izz.boolean.isValid(true) != true)
             failed("boolean failed on true");
     };
-    IzzBooleanTest.prototype["izz.boolean.validate returns true for false"] = function () {
-        if (izz.boolean.validate(false) != true)
+    IzzBooleanTest.prototype["izz.boolean.isValid returns true for false"] = function () {
+        if (izz.boolean.isValid(false) != true)
             failed("boolean failed on false");
     };
-    IzzBooleanTest.prototype["izz.boolean.validate returns false for non-booleans"] = function () {
+    IzzBooleanTest.prototype["izz.boolean.isValid returns false for non-booleans"] = function () {
         var data = [
             "beef", "", -1, 0, 1, 2.0, 0.0, -1.3, null, { beef: false }, undefined, [{}], {},
         ];
         data.forEach(function (item) {
-            if (izz.boolean.validate(item))
+            if (izz.boolean.isValid(item))
                 failed("Failed on non-boolean (" + JSON.stringify(item) + ")");
         });
+    };
+    IzzBooleanTest.prototype["izz.boolean.validate returns no error (null) for false"] = function () {
+        var errors = izz.boolean.validate('ctx', false);
+        if (errors.length > 0) {
+            failed('izz.boolean.validate for false should have been null. got: ' + JSON.stringify(errors, null, 2));
+        }
+    };
+    IzzBooleanTest.prototype["izz.boolean.validate returns no error (null) for true"] = function () {
+        var errors = izz.boolean.validate('ctx', true);
+        if (errors.length > 0) {
+            failed('izz.boolean.validate for true should have been null. got: ' + JSON.stringify(errors, null, 2));
+        }
+    };
+    IzzBooleanTest.prototype["izz.boolean.validate returns an error for non-boolean data"] = function () {
+        var errors = izz.boolean.validate('ctx', 'fleep');
+        if (errors.length !== 1)
+            failed('izz.boolean.validate for \'fleep\' should not have produced an error. got: ' + JSON.stringify(errors, null, 2));
     };
     return IzzBooleanTest;
 }());
 __decorate([
     mocha_typescript_1.test
-], IzzBooleanTest.prototype, "izz.boolean.validate returns true for true", null);
+], IzzBooleanTest.prototype, "izz.boolean.isValid returns true for true", null);
 __decorate([
     mocha_typescript_1.test
-], IzzBooleanTest.prototype, "izz.boolean.validate returns true for false", null);
+], IzzBooleanTest.prototype, "izz.boolean.isValid returns true for false", null);
 __decorate([
     mocha_typescript_1.test
-], IzzBooleanTest.prototype, "izz.boolean.validate returns false for non-booleans", null);
+], IzzBooleanTest.prototype, "izz.boolean.isValid returns false for non-booleans", null);
+__decorate([
+    mocha_typescript_1.test
+], IzzBooleanTest.prototype, "izz.boolean.validate returns no error (null) for false", null);
+__decorate([
+    mocha_typescript_1.test
+], IzzBooleanTest.prototype, "izz.boolean.validate returns no error (null) for true", null);
+__decorate([
+    mocha_typescript_1.test
+], IzzBooleanTest.prototype, "izz.boolean.validate returns an error for non-boolean data", null);
 IzzBooleanTest = __decorate([
     mocha_typescript_1.suite
 ], IzzBooleanTest);

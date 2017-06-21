@@ -15,32 +15,40 @@ var numStr = izz.union([izz.number, izz.string]);
 var IzzUnionTest = (function () {
     function IzzUnionTest() {
     }
-    IzzUnionTest.prototype["izz.union.validate returns true for any valid Typed union"] = function () {
-        if (numStr.validate(1) !== true)
+    IzzUnionTest.prototype["izz.union.isValid returns true for any valid Typed union"] = function () {
+        if (numStr.isValid(1) !== true)
             failed("numStr union should allow numbers");
-        if (numStr.validate('dog') !== true)
+        if (numStr.isValid('dog') !== true)
             failed("numStr union should allow strings");
     };
-    IzzUnionTest.prototype["izz.union.validate returns false for any invalid type"] = function () {
-        if (numStr.validate(true) !== false)
+    IzzUnionTest.prototype["izz.union.isValid returns false for any invalid type"] = function () {
+        if (numStr.isValid(true) !== false)
             failed("numStr union should not allow true");
-        if (numStr.validate(false) !== false)
+        if (numStr.isValid(false) !== false)
             failed("numStr union should not allow false");
-        if (numStr.validate(null) !== false)
+        if (numStr.isValid(null) !== false)
             failed("numStr union should not allow null");
-        if (numStr.validate(undefined) !== false)
+        if (numStr.isValid(undefined) !== false)
             failed("numStr union should not allow undefined");
-        if (numStr.validate({ "beef": "dog" }) !== false)
+        if (numStr.isValid({ "beef": "dog" }) !== false)
             failed("numStr union should not allow objects");
+    };
+    IzzUnionTest.prototype["izz.union.validate returns no errors for valid data"] = function () {
+        var errors = numStr.validate('bad_data', true);
+        if (errors.length != 1)
+            failed("numStr.validate union should return an error on true. Got: " + JSON.stringify(errors, null, 2));
     };
     return IzzUnionTest;
 }());
 __decorate([
     mocha_typescript_1.test
-], IzzUnionTest.prototype, "izz.union.validate returns true for any valid Typed union", null);
+], IzzUnionTest.prototype, "izz.union.isValid returns true for any valid Typed union", null);
 __decorate([
     mocha_typescript_1.test
-], IzzUnionTest.prototype, "izz.union.validate returns false for any invalid type", null);
+], IzzUnionTest.prototype, "izz.union.isValid returns false for any invalid type", null);
+__decorate([
+    mocha_typescript_1.test
+], IzzUnionTest.prototype, "izz.union.validate returns no errors for valid data", null);
 IzzUnionTest = __decorate([
     mocha_typescript_1.suite
 ], IzzUnionTest);

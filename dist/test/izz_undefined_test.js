@@ -14,16 +14,16 @@ var failed = function (reason) {
 var IzzUndefinedTest = (function () {
     function IzzUndefinedTest() {
     }
-    IzzUndefinedTest.prototype["izz.undefined.validate returns true for undefined"] = function () {
-        if (izz.undefined.validate(undefined) != true)
+    IzzUndefinedTest.prototype["izz.undefined.isValid returns true for undefined"] = function () {
+        if (izz.undefined.isValid(undefined) != true)
             failed("Failed on undefined");
     };
-    IzzUndefinedTest.prototype["izz.undefined.validate returns false for non-undefineds"] = function () {
+    IzzUndefinedTest.prototype["izz.undefined.isValid returns false for non-undefineds"] = function () {
         var data = [
             "beef", "", -1, 0, 1, 1.0, -1.0, 0.0, { beef: false }, null, [{}], {},
         ];
         data.forEach(function (item) {
-            if (izz.undefined.validate(item))
+            if (izz.undefined.isValid(item))
                 failed("Failed on non-undefined (" + JSON.stringify(item) + ")");
         });
     };
@@ -31,10 +31,10 @@ var IzzUndefinedTest = (function () {
 }());
 __decorate([
     mocha_typescript_1.test
-], IzzUndefinedTest.prototype, "izz.undefined.validate returns true for undefined", null);
+], IzzUndefinedTest.prototype, "izz.undefined.isValid returns true for undefined", null);
 __decorate([
     mocha_typescript_1.test
-], IzzUndefinedTest.prototype, "izz.undefined.validate returns false for non-undefineds", null);
+], IzzUndefinedTest.prototype, "izz.undefined.isValid returns false for non-undefineds", null);
 IzzUndefinedTest = __decorate([
     mocha_typescript_1.suite
 ], IzzUndefinedTest);

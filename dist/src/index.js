@@ -26,4 +26,10 @@ var literal_type_1 = require("./literal_type");
 exports.literal = literal_type_1.default;
 // helpers
 var data_validator_1 = require("./data_validator");
-exports.DataValidator = data_validator_1.default;
+exports.DataValidator = data_validator_1.DataValidator;
+// common
+var typed_1 = require("./typed");
+exports.Typed = typed_1.Typed;
+exports.FieldContext = typed_1.FieldContext;
+exports.FieldError = typed_1.FieldError;
+exports.fieldErrors = typed_1.fieldErrors;

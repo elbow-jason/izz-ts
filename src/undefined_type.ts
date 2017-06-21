@@ -1,11 +1,14 @@
 
-import { Typed } from './typed'
+import { Typed, TypedI, FieldContext, fieldErrors, FieldError } from './typed'
 
-export class UndefinedType implements Typed {
+export class UndefinedType extends Typed {
+  readonly name: string = 'undefined'
 
-  validate(data: any): boolean {
+  isValid(data: any): boolean {
     return data === undefined
   }
+
+
 }
 
 export default new UndefinedType()

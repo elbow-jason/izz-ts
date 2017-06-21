@@ -17,42 +17,42 @@ var literallyTrue = izz.literal(true);
 var IzzLiteralTest = (function () {
     function IzzLiteralTest() {
     }
-    IzzLiteralTest.prototype["izz.literal.validate returns true for correct strings ('dog')"] = function () {
-        if (literallyDog.validate('dog') != true)
+    IzzLiteralTest.prototype["izz.literal.isValid returns true for correct strings ('dog')"] = function () {
+        if (literallyDog.isValid('dog') != true)
             failed("literally 'dog' failed on 'dog'");
     };
-    IzzLiteralTest.prototype["izz.boolean.validate (string) returns false for invalid others"] = function () {
+    IzzLiteralTest.prototype["izz.boolean.isValid (string) returns false for invalid others"] = function () {
         var data = [
             "beef", "", -1, 0, 1, 2.0, 0.0, -1.3, null, { beef: false }, undefined, [{}], {},
         ];
         data.forEach(function (item) {
-            if (literallyDog.validate(item))
+            if (literallyDog.isValid(item))
                 failed("Failed on other value (" + JSON.stringify(item) + ")");
         });
     };
-    IzzLiteralTest.prototype["izz.literal.validate returns true for correct number (100)"] = function () {
-        if (literally100.validate(100) != true)
+    IzzLiteralTest.prototype["izz.literal.isValid returns true for correct number (100)"] = function () {
+        if (literally100.isValid(100) != true)
             failed("literally 100 failed on 100");
     };
-    IzzLiteralTest.prototype["izz.boolean.validate (number) returns false for invalid others"] = function () {
+    IzzLiteralTest.prototype["izz.boolean.isValid (number) returns false for invalid others"] = function () {
         var data = [
             "beef", "", -1, 0, 2, 2.0, 0.0, -1.3, null, true, false, { beef: false }, undefined, [{}], {},
         ];
         data.forEach(function (item) {
-            if (literallyDog.validate(item))
+            if (literallyDog.isValid(item))
                 failed("Failed on other value (" + JSON.stringify(item) + ")");
         });
     };
-    IzzLiteralTest.prototype["izz.literal.validate returns true for correct boolean (true)"] = function () {
-        if (literallyTrue.validate(true) != true)
+    IzzLiteralTest.prototype["izz.literal.isValid returns true for correct boolean (true)"] = function () {
+        if (literallyTrue.isValid(true) != true)
             failed("literally true failed on true");
     };
-    IzzLiteralTest.prototype["izz.boolean.validate (boolean) returns false for invalid others"] = function () {
+    IzzLiteralTest.prototype["izz.boolean.isValid (boolean) returns false for invalid others"] = function () {
         var data = [
             "beef", "", -1, 0, 2, 2.0, 0.0, -1.3, null, false, { beef: false }, undefined, [{}], {},
         ];
         data.forEach(function (item) {
-            if (literallyDog.validate(item))
+            if (literallyDog.isValid(item))
                 failed("Failed on other value (" + JSON.stringify(item) + ")");
         });
     };
@@ -60,22 +60,22 @@ var IzzLiteralTest = (function () {
 }());
 __decorate([
     mocha_typescript_1.test
-], IzzLiteralTest.prototype, "izz.literal.validate returns true for correct strings ('dog')", null);
+], IzzLiteralTest.prototype, "izz.literal.isValid returns true for correct strings ('dog')", null);
 __decorate([
     mocha_typescript_1.test
-], IzzLiteralTest.prototype, "izz.boolean.validate (string) returns false for invalid others", null);
+], IzzLiteralTest.prototype, "izz.boolean.isValid (string) returns false for invalid others", null);
 __decorate([
     mocha_typescript_1.test
-], IzzLiteralTest.prototype, "izz.literal.validate returns true for correct number (100)", null);
+], IzzLiteralTest.prototype, "izz.literal.isValid returns true for correct number (100)", null);
 __decorate([
     mocha_typescript_1.test
-], IzzLiteralTest.prototype, "izz.boolean.validate (number) returns false for invalid others", null);
+], IzzLiteralTest.prototype, "izz.boolean.isValid (number) returns false for invalid others", null);
 __decorate([
     mocha_typescript_1.test
-], IzzLiteralTest.prototype, "izz.literal.validate returns true for correct boolean (true)", null);
+], IzzLiteralTest.prototype, "izz.literal.isValid returns true for correct boolean (true)", null);
 __decorate([
     mocha_typescript_1.test
-], IzzLiteralTest.prototype, "izz.boolean.validate (boolean) returns false for invalid others", null);
+], IzzLiteralTest.prototype, "izz.boolean.isValid (boolean) returns false for invalid others", null);
 IzzLiteralTest = __decorate([
     mocha_typescript_1.suite
 ], IzzLiteralTest);

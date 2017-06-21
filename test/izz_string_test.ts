@@ -9,20 +9,20 @@ const failed = (reason: string): never => {
 
 @suite class IzzStringTest {
 
-  @test "izz.string.validate returns true for empty strings" () {
-    if (izz.string.validate("") != true) failed("Failed on an empty string")
+  @test "izz.string.isValid returns true for empty strings" () {
+    if (izz.string.isValid("") != true) failed("Failed on an empty string")
   }
 
-  @test "izz.string.validate returns true for normal strings" () {
-    if (izz.string.validate("a longer string") != true) failed("Failed on a normal string")
+  @test "izz.string.isValid returns true for normal strings" () {
+    if (izz.string.isValid("a longer string") != true) failed("Failed on a normal string")
   }
 
-  @test "izz.string.validate returns false for non-strings" () {
+  @test "izz.string.isValid returns false for non-strings" () {
     let data = [
       0.0, -1.23, 1.23, -1, 0, 1, true, false, null, {beef: false}, undefined, [{}], {},
     ]
     data.forEach((item: any) => {
-      if (izz.string.validate(item)) failed(`Failed on non-string (${JSON.stringify(item)})`)
+      if (izz.string.isValid(item)) failed(`Failed on non-string (${JSON.stringify(item)})`)
     })
   }
 

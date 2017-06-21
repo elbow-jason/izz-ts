@@ -1,6 +1,7 @@
 import { Typed } from './typed';
-export declare class BooleanType implements Typed {
-    validate(data: any): data is boolean;
+export declare class BooleanType extends Typed {
+    readonly name: string;
+    isValid(data: any): data is boolean;
 }
-declare const booleanType: BooleanType;
-export default booleanType;
+declare const _default: BooleanType;
+export default _default;

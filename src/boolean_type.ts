@@ -1,12 +1,12 @@
-import { Typed } from './typed'
+import { Typed, FieldContext } from './typed'
 
-export class BooleanType implements Typed {
+export class BooleanType extends Typed {
+  readonly name: string = 'boolean'
 
-  validate(data: any): data is boolean {
+  isValid(data: any): data is boolean {
     return typeof data === 'boolean'
   }
 
 }
 
-const booleanType = new BooleanType()
-export default booleanType
+export default new BooleanType()

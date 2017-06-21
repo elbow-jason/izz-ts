@@ -9,21 +9,42 @@ const failed = (reason: string): never => {
 
 @suite class IzzBooleanTest {
 
-  @test "izz.boolean.validate returns true for true" () {
-    if (izz.boolean.validate(true) != true) failed("boolean failed on true")
+  @test "izz.boolean.isValid returns true for true" () {
+    if (izz.boolean.isValid(true) != true) failed("boolean failed on true")
   }
 
-  @test "izz.boolean.validate returns true for false" () {
-    if (izz.boolean.validate(false) != true) failed("boolean failed on false")
+  @test "izz.boolean.isValid returns true for false" () {
+    if (izz.boolean.isValid(false) != true) failed("boolean failed on false")
   }
 
-  @test "izz.boolean.validate returns false for non-booleans" () {
+  @test "izz.boolean.isValid returns false for non-booleans" () {
     let data = [
       "beef", "", -1, 0, 1, 2.0, 0.0, -1.3, null, {beef: false}, undefined, [{}], {},
     ]
     data.forEach((item: any) => {
-      if (izz.boolean.validate(item)) failed(`Failed on non-boolean (${JSON.stringify(item)})`)
+      if (izz.boolean.isValid(item)) failed(`Failed on non-boolean (${JSON.stringify(item)})`)
     })
   }
+
+  @test "izz.boolean.validate returns no error (null) for false" () {
+    let errors = izz.boolean.validate('ctx', false)
+    if (errors.length > 0) {
+      failed('izz.boolean.validate for false should have been null. got: ' + JSON.stringify(errors, null, 2))
+    }
+  }
+
+  @test "izz.boolean.validate returns no error (null) for true" () {
+    let errors = izz.boolean.validate('ctx', true)
+    if (errors.length > 0) {
+      failed('izz.boolean.validate for true should have been null. got: ' + JSON.stringify(errors, null, 2))
+    }
+    
+  }
+
+  @test "izz.boolean.validate returns an error for non-boolean data" () {
+    let errors = izz.boolean.validate('ctx', 'fleep')
+    if (errors.length !== 1) failed('izz.boolean.validate for \'fleep\' should not have produced an error. got: ' + JSON.stringify(errors, null, 2))
+  }
+
 
 }

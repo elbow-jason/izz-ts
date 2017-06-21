@@ -1,11 +1,12 @@
-import { Typed } from './typed'
+import { Typed, FieldContext } from './typed'
 
-export class AnyType implements Typed {
-  validate(data: any): data is any {
+export class AnyType extends Typed {
+  readonly name: string = 'any'
+
+  isValid(data: any): data is any {
     return true
   }
+
 }
 
-const anyType = new AnyType()
-
-export default anyType
+export default new AnyType()

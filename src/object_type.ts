@@ -1,5 +1,5 @@
 
-import { Typed } from './typed'
+import { Typed, FieldContext, FieldError, fieldErrors } from './typed'
 
 const getTyped = (obj: any, field: string): Typed => {
   let typed: Typed = obj[field]
@@ -10,28 +10,55 @@ const getData = (data: any, field: string): any => {
   return data[field]
 }
 
-export class ObjectType implements Typed {
-  fields: { [key: string]: Typed }
+export class ObjectType extends Typed {
+  readonly name: 'object'
+  readonly fields: { [key: string]: Typed }
   constructor(fields: { [key: string]: Typed } = {}) {
+    super()
     this.fields = fields
   }
 
-  validate(data: any): data is object {
-    return (typeof data === 'object' && !Array.isArray(data) && (data != null) && this.validateFields(data))
+  isValid(data: any): data is object {
+    return (this.isObjecty(data) && this.validateFields(data))
   }
 
-  validateFields(data: any): boolean {
-    for (let prop in this.fields) {
-      if (this.fields.hasOwnProperty(prop)) {
-        let value: any = getData(data, prop)
-        let typed: Typed = getTyped(this.fields, prop)
-        let validated = typed.validate(value)
+  private isObjecty(data: any): boolean {
+    return (typeof data === 'object' && !Array.isArray(data) && (data != null))
+  }
+
+  private validateFields(data: any): boolean {
+    for (let field in this.fields) {
+      if (this.fields.hasOwnProperty(field)) {
+        let value: any = getData(data, field)
+        let typed: Typed = getTyped(this.fields, field)
+        let validated = typed.isValid(value)
         if (validated === false) {
           return false
         }
       }
     }
     return true
+  }
+
+  context(parent_field: string, data: any): FieldContext[] {
+    if (this.isObjecty(data)) {
+      let contexts: FieldContext[] = []
+      for (let field in this.fields) {
+        if (this.fields.hasOwnProperty(field)) {
+          let value: any = getData(data, field)
+          let typed: Typed = getTyped(this.fields, field)
+          let ctx = new FieldContext(`${parent_field}.${field}`, typed, value)
+          if (ctx.error()) contexts.push(ctx)
+        }
+      }
+      return contexts
+    } else {
+      return [new FieldContext(parent_field, this, data)]
+    }
+  }
+
+  validate(parent_field: string, data: any): FieldError[] {
+    return fieldErrors(this.context(parent_field, data))
   }
 
 }
