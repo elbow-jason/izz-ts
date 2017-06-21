@@ -1,5 +1,6 @@
-# izz-ts
+[![Build Status](https://travis-ci.org/elbow-jason/izz-ts.svg?branch=master)](https://travis-ci.org/elbow-jason/izz-ts)
 
+# izz-ts 
 A TypeScript Guard Type Checker
 
 ## Install
