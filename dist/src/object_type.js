@@ -23,6 +23,7 @@ var ObjectType = (function (_super) {
     function ObjectType(fields) {
         if (fields === void 0) { fields = {}; }
         var _this = _super.call(this) || this;
+        _this.name = 'object';
         _this.fields = fields;
         return _this;
     }

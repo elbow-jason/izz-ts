@@ -85,4 +85,23 @@ const izzEmptyObject = izz.object({})
     }
   }
 
+
+  @test "izz.object.validate returns valid errors for invalid objects" () {
+    let numVal = izz.object({value: izz.number})
+    let errors = numVal.validate('undef', undefined)
+    let error = errors[0]
+    if (error.field !== 'undef') failed('object error had invalid \'field\' value. Error was:' + JSON.stringify(error))
+    if (error.expected !== 'object') failed('object error had invalid \'expected\' value. Error was:' + JSON.stringify(error))
+    if (error.got !== undefined) failed('object error had invalid \'got\' value. Error was:' + JSON.stringify(error))
+  }
+
+  @test "izz.object.validate returns valid errors for invalid fields of objects" () {
+    let numVal = izz.object({value: izz.number})
+    let errors = numVal.validate('bad_data', {value: undefined})
+    let error = errors[0]
+    if (error.field !== 'bad_data.value') failed('object error had invalid \'field\' value: ' + JSON.stringify(error.field))
+    if (error.expected !== 'number') failed('object error had invalid \'expected\' value: ' + JSON.stringify(error.expected))
+    if (error.got !== undefined) failed('object error had invalid \'got\' value: ' + JSON.stringify(error.got))
+  }
+
 }

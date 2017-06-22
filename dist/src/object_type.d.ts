@@ -1,6 +1,6 @@
 import { Typed, FieldContext, FieldError } from './typed';
 export declare class ObjectType extends Typed {
-    readonly name: 'object';
+    readonly name: string;
     readonly fields: {
         [key: string]: Typed;
     };

@@ -81,6 +81,28 @@ var IzzObjectTest = (function () {
             failed('not_person should have 2 errors upon validation. Got: ' + JSON.stringify(result));
         }
     };
+    IzzObjectTest.prototype["izz.object.validate returns valid errors for invalid objects"] = function () {
+        var numVal = izz.object({ value: izz.number });
+        var errors = numVal.validate('undef', undefined);
+        var error = errors[0];
+        if (error.field !== 'undef')
+            failed('object error had invalid \'field\' value. Error was:' + JSON.stringify(error));
+        if (error.expected !== 'object')
+            failed('object error had invalid \'expected\' value. Error was:' + JSON.stringify(error));
+        if (error.got !== undefined)
+            failed('object error had invalid \'got\' value. Error was:' + JSON.stringify(error));
+    };
+    IzzObjectTest.prototype["izz.object.validate returns valid errors for invalid fields of objects"] = function () {
+        var numVal = izz.object({ value: izz.number });
+        var errors = numVal.validate('bad_data', { value: undefined });
+        var error = errors[0];
+        if (error.field !== 'bad_data.value')
+            failed('object error had invalid \'field\' value: ' + JSON.stringify(error.field));
+        if (error.expected !== 'number')
+            failed('object error had invalid \'expected\' value: ' + JSON.stringify(error.expected));
+        if (error.got !== undefined)
+            failed('object error had invalid \'got\' value: ' + JSON.stringify(error.got));
+    };
     return IzzObjectTest;
 }());
 __decorate([
@@ -104,6 +126,12 @@ __decorate([
 __decorate([
     mocha_typescript_1.test
 ], IzzObjectTest.prototype, "izz.object.validate returns errors for invalid objects", null);
+__decorate([
+    mocha_typescript_1.test
+], IzzObjectTest.prototype, "izz.object.validate returns valid errors for invalid objects", null);
+__decorate([
+    mocha_typescript_1.test
+], IzzObjectTest.prototype, "izz.object.validate returns valid errors for invalid fields of objects", null);
 IzzObjectTest = __decorate([
     mocha_typescript_1.suite
 ], IzzObjectTest);

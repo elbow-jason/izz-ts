@@ -62,7 +62,6 @@ exports.fieldErrors = function (contexts) {
 };
 var Typed = (function () {
     function Typed() {
-        this.name = 'not_implemented';
     }
     Typed.prototype.context = function (field, data) {
         return [new FieldContext(field, this, data)];

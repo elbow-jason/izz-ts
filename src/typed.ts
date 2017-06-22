@@ -83,7 +83,7 @@ export interface TypedI {
 
 
 export class Typed implements TypedI {
-  readonly name: string = 'not_implemented'
+  readonly name: string
 
   context(field: string, data: any): FieldContext[] { 
     return [new FieldContext(field, this, data)]

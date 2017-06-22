@@ -11,7 +11,7 @@ const getData = (data: any, field: string): any => {
 }
 
 export class ObjectType extends Typed {
-  readonly name: 'object'
+  readonly name: string = 'object'
   readonly fields: { [key: string]: Typed }
   constructor(fields: { [key: string]: Typed } = {}) {
     super()
